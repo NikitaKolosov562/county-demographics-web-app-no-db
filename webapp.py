@@ -16,11 +16,8 @@ def home():
 def render_fact():
     states = get_state_options()
     state = request.args.get('state')
-    county = county_most_under_18(state)
-    county2 = percent_65_and_older(state)
-    fact = "In " + state + ", the county with the highest percentage of under 18 year olds is " + county + "."
-    fact2 = "In " + state + ", the county with the highest percentage of 65 and older is " + county + "."
-    return render_template('home.html', state_options=states, funFact=fact, funFact2 = fact2)
+    fact=highest_pop2014(state)
+    return render_template('home.html', state_options=states, funFact=fact)
     
 def get_state_options():
     """Return the html code for the drop down menu.  Each option is a state abbreviation from the demographic data."""
@@ -60,7 +57,18 @@ def percent_65_and_older(state):
                 highest = c["Age"]["Percent 65 and Older"]
                 county = c["County"]
     return county
-
+def highest_pop2014(state):
+    with open('demographics.json') as demographics_data:
+        counties = json.load(demographics_data)
+    highest=0
+    for c in counties:
+        if c["State"] == state:
+            if c["Population"]["2014 Population"] > highest:
+                highest=c["Population"]["2014 Population"]
+                county = c["County"]
+    answerOne="The Highest Population in "+state+" is " +highest + " in " +county +"."
+    return answerOne             
+                
 def is_localhost():
     """ Determines if app is running on localhost or not
     Adapted from: https://stackoverflow.com/questions/17077863/how-to-see-if-a-flask-app-is-being-run-on-localhost
