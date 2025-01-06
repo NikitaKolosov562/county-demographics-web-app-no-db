@@ -27,19 +27,19 @@
 		</div>
 	</nav>
 	<br>
-        <form action="/showFact">
+        <form action="/showFact2">
           <select name="state"> <!-- add onchange="this.form.submit()" to submit/update the form when an option is selected.  Usefull for then displaying county options. -->
             {{ state_options }}
           </select>
 	  
 
           <br><br>
-          <input type="submit" value="Get the highest and lowest populations!">
-		  <br>
+          <input type="submit" value="Get the highest and lowest home ownership rates.">
+		  
 		  
         </form>
         <div id="funFact">
-            <p>Highest Population is in {{ funFactC }} with {{ funFact }}</p>
+            <p>Highest home ownership rate is in {{ funFactCC }} with {{ funFactC }}</p>
 	
 		 </div>
 
