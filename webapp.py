@@ -16,7 +16,6 @@ def home():
 def render_fact():
     states = get_state_options()
     state = request.args.get('state')
-    year = request.args.get('year')
     fact=highest_pop2014(state,year)
     factC=highest_popc2014(state,year)    
     return render_template('home.html', state_options=states, funFact=fact, funFactC=factC)
@@ -59,25 +58,25 @@ def percent_65_and_older(state):
                 highest = c["Age"]["Percent 65 and Older"]
                 county = c["County"]
     return county
-def highest_pop2014(state,year):
+def highest_pop2014(state):
     with open('demographics.json') as demographics_data:
         counties = json.load(demographics_data)
     highest=0
     for c in counties:
         if c["State"] == state:
-            if c["Population"]["year"] > highest:
-                highest=c["Population"]["year"]
+            if c["Population"]["2014 Population"] > highest:
+                highest=c["Population"]["2014 Population"]
                 county = c["County"]
     answerOne=highest
     return answerOne             
-def highest_popc2014(state,year):
+def highest_popc2014(state):
     with open('demographics.json') as demographics_data:
         counties = json.load(demographics_data)
     highest=0
     for c in counties:
         if c["State"] == state:
-            if c["Population"]["year"] > highest:
-                highest=c["Population"]["year"]
+            if c["Population"]["2014 Population"] > highest:
+                highest=c["Population"]["2014 Population"]
                 county = c["County"]
     answerTwo=county
     return answerTwo                    
