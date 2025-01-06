@@ -68,7 +68,17 @@ def highest_pop2014(state):
                 county = c["County"]
     answerOne=highest
     return answerOne             
-                
+def highest_pop2014(state):
+    with open('demographics.json') as demographics_data:
+        counties = json.load(demographics_data)
+    highest=0
+    for c in counties:
+        if c["State"] == state:
+            if c["Population"]["2014 Population"] > highest:
+                highest=c["Population"]["2014 Population"]
+                county = c["County"]
+    answerOne=county
+    return answerTwo                    
 def is_localhost():
     """ Determines if app is running on localhost or not
     Adapted from: https://stackoverflow.com/questions/17077863/how-to-see-if-a-flask-app-is-being-run-on-localhost
