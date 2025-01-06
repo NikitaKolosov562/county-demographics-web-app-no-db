@@ -22,7 +22,14 @@ def render_fact():
     fact=highest_pop2014(state)
     factC=highest_popc2014(state)    
     return render_template('home.html', state_options=states, funFact=fact, funFactC=factC)
-    
+@app.route('/showFact2')
+def render_fact():
+    states = get_state_options()
+    state = request.args.get('state')
+    factC=owner(state)
+    factCC=owner(state)    
+    return render_template('home.html', state_options=states, funFactC=fact, funFactCC=factC)
+        
 def get_state_options():
     """Return the html code for the drop down menu.  Each option is a state abbreviation from the demographic data."""
     with open('demographics.json') as demographics_data:
@@ -82,7 +89,28 @@ def highest_popc2014(state):
                 highest=c["Population"]["2014 Population"]
                 county = c["County"]
     answerTwo=county
-    return answerTwo                    
+    return answerTwo  
+def owner(state):
+    with open('demographics.json') as demographics_data:
+            counties = json.load(demographics_data)
+        highest=0
+        for c in counties:
+            if c["State"] == state:
+                if c["Housing"]["Homeownership Rate"] > highest:
+                    highest=c["Housing"]["Homeownership Rate"]
+                    county = c["County"]
+        answerOne1=highest
+def owner(state):
+    with open('demographics.json') as demographics_data:
+            counties = json.load(demographics_data)
+        highest=0
+        for c in counties:
+            if c["State"] == state:
+                if c["Housing"]["Homeownership Rate"] > highest:
+                    highest=c["Housing"]["Homeownership Rate"]
+                    county = c["County"]
+        answerOne2=county
+    
 def is_localhost():
     """ Determines if app is running on localhost or not
     Adapted from: https://stackoverflow.com/questions/17077863/how-to-see-if-a-flask-app-is-being-run-on-localhost
