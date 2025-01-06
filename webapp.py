@@ -92,25 +92,26 @@ def highest_popc2014(state):
     return answerTwo  
 def owner(state):
     with open('demographics.json') as demographics_data:
-            counties = json.load(demographics_data)
-        highest=0
-        for c in counties:
-            if c["State"] == state:
-                if c["Housing"]["Homeownership Rate"] > highest:
-                    highest=c["Housing"]["Homeownership Rate"]
-                    county = c["County"]
-        answerOne1=highest
+        counties = json.load(demographics_data)
+    highest=0
+    for c in counties:
+        if c["State"] == state:
+            if c["Housing"]["Homeownership Rate"] > highest:
+                highest=c["Housing"]["Homeownership Rate"]
+                county = c["County"]
+    answerOne1=highest
+    return answerOne1
 def ownerc(state):
     with open('demographics.json') as demographics_data:
-            counties = json.load(demographics_data)
-        highest=0
-        for c in counties:
-            if c["State"] == state:
-                if c["Housing"]["Homeownership Rate"] > highest:
-                    highest=c["Housing"]["Homeownership Rate"]
-                    county = c["County"]
-        answerOne2=county
-    
+        counties = json.load(demographics_data)
+    highest=0
+    for c in counties:
+        if c["State"] == state:
+            if c["Housing"]["Homeownership Rate"] > highest:
+                highest=c["Housing"]["Homeownership Rate"]
+                county = c["County"]
+    answerOne2=county
+    return answerOne2
 def is_localhost():
     """ Determines if app is running on localhost or not
     Adapted from: https://stackoverflow.com/questions/17077863/how-to-see-if-a-flask-app-is-being-run-on-localhost
