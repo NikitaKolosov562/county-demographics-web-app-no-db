@@ -23,7 +23,7 @@ def render_fact():
     factC=highest_popc2014(state)    
     return render_template('home.html', state_options=states, funFact=fact, funFactC=factC)
 @app.route('/showFact2')
-def render_fact():
+def render_fact2():
     states = get_state_options()
     state = request.args.get('state')
     factC=owner(state)
