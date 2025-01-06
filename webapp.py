@@ -17,7 +17,8 @@ def render_fact():
     states = get_state_options()
     state = request.args.get('state')
     fact=highest_pop2014(state)
-    return render_template('home.html', state_options=states, funFact=fact)
+    factC=highest_popc2014(state)    
+    return render_template('home.html', state_options=states, funFact=fact, funFactC=factC)
     
 def get_state_options():
     """Return the html code for the drop down menu.  Each option is a state abbreviation from the demographic data."""
@@ -68,7 +69,7 @@ def highest_pop2014(state):
                 county = c["County"]
     answerOne=highest
     return answerOne             
-def highest_pop2014(state):
+def highest_popc2014(state):
     with open('demographics.json') as demographics_data:
         counties = json.load(demographics_data)
     highest=0
