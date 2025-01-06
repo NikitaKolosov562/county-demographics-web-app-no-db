@@ -78,7 +78,7 @@ def highest_popc2014(state):
             if c["Population"]["2014 Population"] > highest:
                 highest=c["Population"]["2014 Population"]
                 county = c["County"]
-    answerOne=county
+    answerTwo=county
     return answerTwo                    
 def is_localhost():
     """ Determines if app is running on localhost or not
