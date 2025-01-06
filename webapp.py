@@ -28,7 +28,7 @@ def render_fact2():
     state = request.args.get('state')
     factC=owner(state)
     factCC=ownerc(state)    
-    return render_template('home.html', state_options=states, funFactC=fact, funFactCC=factC)
+    return render_template('home.html', state_options=states, funFactC=factC, funFactCC=factCC)
         
 def get_state_options():
     """Return the html code for the drop down menu.  Each option is a state abbreviation from the demographic data."""
