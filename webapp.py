@@ -66,7 +66,7 @@ def highest_pop2014(state):
             if c["Population"]["2014 Population"] > highest:
                 highest=c["Population"]["2014 Population"]
                 county = c["County"]
-    answerOne="The Highest Population in "+state+" is " +highest + " in " +county +"."
+    answerOne="The Highest Population in "+state+" is " + int(highest) + " in " +county +"."
     return answerOne             
                 
 def is_localhost():
