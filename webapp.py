@@ -17,8 +17,8 @@ def render_fact():
     states = get_state_options()
     state = request.args.get('state')
     year = request.args.get('year')
-    fact=highest_pop2014(state)
-    factC=highest_popc2014(state)    
+    fact=highest_pop2014(state,year)
+    factC=highest_popc2014(state,year)    
     return render_template('home.html', state_options=states, funFact=fact, funFactC=factC)
     
 def get_state_options():
