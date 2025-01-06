@@ -27,7 +27,7 @@ def render_fact():
     states = get_state_options()
     state = request.args.get('state')
     factC=owner(state)
-    factCC=owner(state)    
+    factCC=ownerc(state)    
     return render_template('home.html', state_options=states, funFactC=fact, funFactCC=factC)
         
 def get_state_options():
@@ -100,7 +100,7 @@ def owner(state):
                     highest=c["Housing"]["Homeownership Rate"]
                     county = c["County"]
         answerOne1=highest
-def owner(state):
+def ownerc(state):
     with open('demographics.json') as demographics_data:
             counties = json.load(demographics_data)
         highest=0
